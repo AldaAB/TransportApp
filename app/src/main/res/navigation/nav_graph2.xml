@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph2"
+    app:startDestination="@id/codigoFragment1">
+
+    <fragment
+        android:id="@+id/codigoFragment1"
+        android:name="com.example.transportappv3.CodigoFragment1"
+        android:label="fragment_codigo1"
+        tools:layout="@layout/fragment_codigo1" >
+        <action
+            android:id="@+id/action_codigoFragment1_to_codigoFragment2"
+            app:destination="@id/codigoFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/codigoFragment2"
+        android:name="com.example.transportappv3.CodigoFragment2"
+        android:label="fragment_codigo2"
+        tools:layout="@layout/fragment_codigo2" >
+        <action
+            android:id="@+id/action_codigoFragment2_to_codigoFragment3"
+            app:destination="@id/codigoFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/codigoFragment3"
+        android:name="com.example.transportappv3.CodigoFragment3"
+        android:label="fragment_codigo3"
+        tools:layout="@layout/fragment_codigo3" >
+        <action
+            android:id="@+id/action_codigoFragment3_to_codigoFragment4"
+            app:destination="@id/codigoFragment4" />
+    </fragment>
+    <fragment
+        android:id="@+id/codigoFragment4"
+        android:name="com.example.transportappv3.CodigoFragment4"
+        android:label="fragment_codigo4"
+        tools:layout="@layout/fragment_codigo4" />
+</navigation>

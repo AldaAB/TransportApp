@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/principalFragment">
+    <fragment
+        android:id="@+id/principalFragment"
+        android:name="com.example.transportappv3.PrincipalFragment"
+        android:label="fragment_principal"
+        tools:layout="@layout/fragment_principal" >
+        <action
+            android:id="@+id/action_principalFragment_to_rutaFragment"
+            app:destination="@id/rutaFragment" />
+        <action
+            android:id="@+id/action_principalFragment_to_tarifaFragment"
+            app:destination="@id/tarifaFragment" />
+        <action
+            android:id="@+id/action_principalFragment_to_informacionFragment"
+            app:destination="@id/informacionFragment" />
+        <action
+            android:id="@+id/action_principalFragment_to_saldoFragment"
+            app:destination="@id/saldoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/rutaFragment"
+        android:name="com.example.transportappv3.RutaFragment"
+        android:label="fragment_ruta"
+        tools:layout="@layout/fragment_ruta" >
+        <action
+            android:id="@+id/action_rutaFragment_to_principalFragment"
+            app:destination="@id/principalFragment" />
+        <action
+            android:id="@+id/action_rutaFragment_to_saldoFragment"
+            app:destination="@id/saldoFragment" />
+        <action
+            android:id="@+id/action_rutaFragment_to_tarifaFragment"
+            app:destination="@id/tarifaFragment" />
+        <action
+            android:id="@+id/action_rutaFragment_to_informacionFragment"
+            app:destination="@id/informacionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/saldoFragment"
+        android:name="com.example.transportappv3.SaldoFragment"
+        android:label="fragment_saldo"
+        tools:layout="@layout/fragment_saldo" >
+        <action
+            android:id="@+id/action_saldoFragment_to_rutaFragment"
+            app:destination="@id/rutaFragment" />
+        <action
+            android:id="@+id/action_saldoFragment_to_informacionFragment"
+            app:destination="@id/informacionFragment" />
+        <action
+            android:id="@+id/action_saldoFragment_to_tarifaFragment"
+            app:destination="@id/tarifaFragment" />
+        <action
+            android:id="@+id/action_saldoFragment_to_principalFragment"
+            app:destination="@id/principalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/informacionFragment"
+        android:name="com.example.transportappv3.InformacionFragment"
+        android:label="fragment_informacion"
+        tools:layout="@layout/fragment_informacion" >
+        <action
+            android:id="@+id/action_informacionFragment_to_rutaFragment"
+            app:destination="@id/rutaFragment" />
+        <action
+            android:id="@+id/action_informacionFragment_to_saldoFragment"
+            app:destination="@id/saldoFragment" />
+        <action
+            android:id="@+id/action_informacionFragment_to_tarifaFragment"
+            app:destination="@id/tarifaFragment" />
+        <action
+            android:id="@+id/action_informacionFragment_to_principalFragment"
+            app:destination="@id/principalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tarifaFragment"
+        android:name="com.example.transportappv3.TarifaFragment"
+        android:label="fragment_tarifa"
+        tools:layout="@layout/fragment_tarifa" >
+        <action
+            android:id="@+id/action_tarifaFragment_to_informacionFragment"
+            app:destination="@id/informacionFragment" />
+        <action
+            android:id="@+id/action_tarifaFragment_to_principalFragment"
+            app:destination="@id/principalFragment" />
+        <action
+            android:id="@+id/action_tarifaFragment_to_rutaFragment"
+            app:destination="@id/rutaFragment" />
+        <action
+            android:id="@+id/action_tarifaFragment_to_saldoFragment"
+            app:destination="@id/saldoFragment" />
+    </fragment>
+</navigation>

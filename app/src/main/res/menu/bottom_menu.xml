@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/rutaFragment"
+        android:title="Rutas"
+        android:icon="@drawable/rutas"
+        android:checked="false"/>
+
+    <item android:id="@+id/tarifaFragment"
+        android:title="Tarifas"
+        android:icon="@drawable/tarifas"
+        android:checked="true"/>
+
+    <item android:id="@+id/saldoFragment"
+        android:title="Saldo"
+        android:icon="@drawable/targeta"
+        android:checked="false"/>
+
+    <item android:id="@+id/informacionFragment"
+        android:title="Usuario"
+        android:icon="@drawable/usuario"
+        android:checked="false"/>
+</menu>

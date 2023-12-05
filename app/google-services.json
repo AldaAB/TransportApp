@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "24744065427",
+    "firebase_url": "https://bdtranportapp-default-rtdb.firebaseio.com",
+    "project_id": "bdtranportapp",
+    "storage_bucket": "bdtranportapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24744065427:android:66d282143d9ad58f871066",
+        "android_client_info": {
+          "package_name": "com.example.transportappv3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkIN6rIKlSJ0w-QslLkv_yfnKnJp0Bl-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
