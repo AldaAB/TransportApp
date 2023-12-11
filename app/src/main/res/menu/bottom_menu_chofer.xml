@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/rutaFragment"
-        android:title="Rutas"
-        android:icon="@drawable/rutas"
+    <item android:id="@+id/choferPrincipalFragment"
+        android:title="Inicio"
+        android:icon="@drawable/house_chimney_9243286"
         android:checked="false"/>
 
-    <item android:id="@+id/tarifaFragment"
+    <item android:id="@+id/tarifasChoferFragment"
         android:title="Tarifas"
         android:icon="@drawable/coins_stacks_money_icon_icons_com_56191"
         android:checked="true"/>
 
-    <item android:id="@+id/saldoFragment"
-        android:title="Saldo"
-        android:icon="@drawable/credit_card_96970"
+    <item android:id="@+id/recargarSaldoFragment"
+        android:title="Recargas"
+        android:icon="@drawable/dolar_de_mensajes"
         android:checked="false"/>
 
-    <item android:id="@+id/informacionFragment"
+    <item android:id="@+id/informacionChoferFragment"
         android:title="Usuario"
         android:icon="@drawable/usuario"
         android:checked="false"/>
+
 </menu>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_chofer"
+    app:startDestination="@id/choferPrincipalFragment">
+
+    <fragment
+        android:id="@+id/choferPrincipalFragment"
+        android:name="com.example.transportappv3.ChoferPrincipalFragment"
+        android:label="fragment_chofer_principal"
+        tools:layout="@layout/fragment_chofer_principal" >
+        <action
+            android:id="@+id/action_choferPrincipalFragment_to_recargarSaldoFragment"
+            app:destination="@id/recargarSaldoFragment" />
+        <action
+            android:id="@+id/action_choferPrincipalFragment_to_informacionChoferFragment"
+            app:destination="@id/informacionChoferFragment" />
+        <action
+            android:id="@+id/action_choferPrincipalFragment_to_tarifasChoferFragment"
+            app:destination="@id/tarifasChoferFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recargarSaldoFragment"
+        android:name="com.example.transportappv3.RecargarSaldoFragment"
+        android:label="fragment_recargar_saldo"
+        tools:layout="@layout/fragment_recargar_saldo" >
+        <action
+            android:id="@+id/action_recargarSaldoFragment_to_choferPrincipalFragment"
+            app:destination="@id/choferPrincipalFragment" />
+        <action
+            android:id="@+id/action_recargarSaldoFragment_to_tarifasChoferFragment"
+            app:destination="@id/tarifasChoferFragment" />
+        <action
+            android:id="@+id/action_recargarSaldoFragment_to_informacionChoferFragment"
+            app:destination="@id/informacionChoferFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/informacionChoferFragment"
+        android:name="com.example.transportappv3.InformacionChoferFragment"
+        android:label="fragment_informacion_chofer"
+        tools:layout="@layout/fragment_informacion_chofer" >
+        <action
+            android:id="@+id/action_informacionChoferFragment_to_tarifasChoferFragment"
+            app:destination="@id/tarifasChoferFragment" />
+        <action
+            android:id="@+id/action_informacionChoferFragment_to_recargarSaldoFragment"
+            app:destination="@id/recargarSaldoFragment" />
+        <action
+            android:id="@+id/action_informacionChoferFragment_to_choferPrincipalFragment"
+            app:destination="@id/choferPrincipalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tarifasChoferFragment"
+        android:name="com.example.transportappv3.TarifasChoferFragment"
+        android:label="fragment_tarifas_chofer"
+        tools:layout="@layout/fragment_tarifas_chofer" >
+        <action
+            android:id="@+id/action_tarifasChoferFragment_to_informacionChoferFragment"
+            app:destination="@id/informacionChoferFragment" />
+        <action
+            android:id="@+id/action_tarifasChoferFragment_to_recargarSaldoFragment"
+            app:destination="@id/recargarSaldoFragment" />
+        <action
+            android:id="@+id/action_tarifasChoferFragment_to_choferPrincipalFragment"
+            app:destination="@id/choferPrincipalFragment" />
+    </fragment>
+</navigation>

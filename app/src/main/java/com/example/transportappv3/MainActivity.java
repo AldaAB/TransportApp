@@ -14,6 +14,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,15 +55,38 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void  loginUser(){
+    public void loginUser() {
         rAuth.signInWithEmailAndPassword(Correo, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    startActivity(new Intent(MainActivity.this, Principal1.class));
-                }
-                else {
-                    Toast.makeText(MainActivity.this, "Inicio de secion incorrecto", Toast.LENGTH_SHORT).show();
+                if (task.isSuccessful()) {
+                    String uid = rAuth.getCurrentUser().getUid();
+                    // Obtener la referencia a la base de datos
+                    DatabaseReference usuarioRef = FirebaseDatabase.getInstance().getReference().child("Usuarios").child(uid);
+                    // Leer el tipo de usuario desde la base de datos
+                    usuarioRef.child("tipoUsuario").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists()) {
+                                String tipoUsuario = dataSnapshot.getValue(String.class);
+                                // Realizar acciones basadas en el tipo de usuario
+                                if ("Chofer".equals(tipoUsuario)) {
+                                    // Usuario es un administrador
+                                    startActivity(new Intent(MainActivity.this, ChoferActivity1.class));
+                                } else {
+                                    // Usuario es un usuario normal
+                                    startActivity(new Intent(MainActivity.this, Principal1.class));
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                            // Manejar errores
+                        }
+                    });
+                } else {
+                    Toast.makeText(MainActivity.this, "Inicio de sesión incorrecto", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -83,8 +83,8 @@ public class RegistroActivity extends AppCompatActivity {
 
         spinnerUser.setOnItemSelectedListener((new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                tipoUser = parent.getItemAtPosition(0).toString();
+            public void onItemSelected(AdapterView<?> parentView, View view, int position, long id) {
+                tipoUser = parentView.getItemAtPosition(position).toString();
             }
 
             @Override
