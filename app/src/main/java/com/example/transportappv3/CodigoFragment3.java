@@ -1,5 +1,6 @@
 package com.example.transportappv3;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -24,6 +26,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.zxing.BarcodeFormat;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import org.w3c.dom.Text;
 
@@ -94,6 +98,8 @@ public class CodigoFragment3 extends Fragment {
         TextView mostrarNumPasajeros = view.findViewById(R.id.mostrarNumPasajeros);
         TextView totalAPagar = view.findViewById(R.id.totalAPagar);
 
+//        ImageView imageViewCodigoQR = view.findViewById(R.id.imageViewCodigoQR);
+
         mostrarRuta.setText(viewModel.getOrigen() + " - " + viewModel.getDestino());
         mostrarNumPasajeros.setText(String.valueOf(viewModel.getNumPasajeros()));
 
@@ -133,6 +139,7 @@ public class CodigoFragment3 extends Fragment {
                         // Llama al método para guardar en Firebase solo si hay un monto total válido
                         guardarViajeEnFirebase(currentUserId, viewModel);
 
+                        Log.d("TAG", "Generando y enviando contenido QR");
                         String contenidoQR =
                                 "Informacion del viaje." + "\n" +
                                         "Origen: " + viewModel.getOrigen() + "\n" +
@@ -144,7 +151,8 @@ public class CodigoFragment3 extends Fragment {
                         bundle.putString("codigoQR", contenidoQR);
 
                         // Utilizar el NavigationController para navegar al siguiente fragmento
-                        Navigation.findNavController(view).navigate(R.id.action_codigoFragment3_to_codigoFragment4);
+                        Navigation.findNavController(view).navigate(R.id.action_codigoFragment3_to_codigoFragment4, bundle);
+                        Log.d("TAG", "Navegación al siguiente fragmento realizada");
                     }
                 }
             });
@@ -195,4 +203,19 @@ public class CodigoFragment3 extends Fragment {
             // Puedes manejar este caso según tus necesidades, por ejemplo, mostrar un mensaje de error.
         }
     }
+//    private void mostrarCodigoQR(String contenidoQR, View view) {
+//        ImageView imageViewCodigoQR = view.findViewById(R.id.imageViewCodigoQR);
+//
+//        try {
+//            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+//            Bitmap bitmap = barcodeEncoder.encodeBitmap(contenidoQR, BarcodeFormat.QR_CODE, 250, 250);
+//            imageViewCodigoQR.setImageBitmap(bitmap);
+//
+//            // Log adicional para verificar si la generación del código QR fue exitosa
+//            Log.d("TAG", "Generación del código QR exitosa");
+//        } catch (Exception e) {
+//            Log.e("TAG", "Error al generar el código QR: " + e.getMessage());
+//            e.printStackTrace();
+//        }
+//    }
 }

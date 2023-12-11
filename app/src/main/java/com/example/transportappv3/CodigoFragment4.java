@@ -77,11 +77,16 @@ public class CodigoFragment4 extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Log.d("TAG", "Fragment4 onViewCreated");
+
         ImageView imageViewCodigoQR = view.findViewById(R.id.imageViewCodigoQR);
 
         if (getArguments() != null) {
             String contenidoQR = getArguments().getString("codigoQR");
 
+            Log.d("TAG", "Fragment4 recibió el contenido del código QR: " + contenidoQR);;
+
+            // Llama al método para mostrar el código QR
             mostrarCodigoQR(contenidoQR, imageViewCodigoQR);
         }
 
@@ -100,12 +105,14 @@ public class CodigoFragment4 extends Fragment {
     }
 
     private void mostrarCodigoQR(String contenidoQR, ImageView imageView) {
+        Log.d("TAG", "mostrarCodigoQR: Iniciando método");
         Log.d("TAG", "Contenido del código QR: " + contenidoQR);
 
         try {
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
             Bitmap bitmap = barcodeEncoder.encodeBitmap(contenidoQR, BarcodeFormat.QR_CODE, 250, 250);
             imageView.setImageBitmap(bitmap);
+            Log.d("TAG", "Generación del código QR exitosa");
         }
         catch (Exception e){
             Log.e("TAG", "Error al generar el código QR: " + e.getMessage());
