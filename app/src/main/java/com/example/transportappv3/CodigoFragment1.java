@@ -5,13 +5,23 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +29,8 @@ import android.widget.LinearLayout;
  * create an instance of this fragment.
  */
 public class CodigoFragment1 extends Fragment {
+
+    private ViajesViewModel viewModel;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -67,14 +79,74 @@ public class CodigoFragment1 extends Fragment {
         return inflater.inflate(R.layout.fragment_codigo1, container, false);
     }
 
+    FirebaseAuth rAuth;
+    DatabaseReference rDatabase;
+
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ViajesViewModel viewModel = new ViewModelProvider(requireActivity()).get(ViajesViewModel.class);
+
         Button b1 = view.findViewById(R.id.button2);
+
+        rAuth = FirebaseAuth.getInstance();
+        rDatabase = FirebaseDatabase.getInstance().getReference();
+
+        Spinner origenSpinner = view.findViewById(R.id.origenSpinner);
+        Spinner destinoSpinner = view.findViewById(R.id.destinoSpinner);
+
+        ArrayAdapter<CharSequence> adapterR1 = ArrayAdapter.createFromResource(
+                requireContext(),
+                R.array.opciones_ruta,
+                android.R.layout.simple_spinner_item
+        );
+        adapterR1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        origenSpinner.setAdapter(adapterR1);
+        destinoSpinner.setAdapter(adapterR1);
+
+        origenSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // Almacena la opción seleccionada
+                String origen = parentView.getItemAtPosition(position).toString();
+                // Puedes hacer algo con el valor seleccionado si es necesario
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // Maneja la situación en la que no se selecciona nada (puede ser opcional)
+            }
+        });
+
+        destinoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // Almacena la opción seleccionada
+                String destino = parentView.getItemAtPosition(position).toString();
+                // Puedes hacer algo con el valor seleccionado si es necesario
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // Maneja la situación en la que no se selecciona nada (puede ser opcional)
+            }
+        });
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String origen = origenSpinner.getSelectedItem().toString().trim();
+                String destino = destinoSpinner.getSelectedItem().toString().trim();
+
+                Log.d("Fragment1", "Origen: " + origen + ", Destino: " + destino);
+
+                if (origen.isEmpty() || destino.isEmpty()) {
+                    return;
+                }
+                viewModel.setOrigen(origen);
+                viewModel.setDestino(destino);
+
                 Navigation.findNavController(view).navigate(R.id.action_codigoFragment1_to_codigoFragment2);
             }
         });

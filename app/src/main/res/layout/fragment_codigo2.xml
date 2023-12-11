@@ -6,6 +6,98 @@
     android:background="@color/gray"
     tools:context=".CodigoFragment2">
 
+    <LinearLayout
+        android:id="@+id/Liner7"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@color/orange_ligth"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="206dp"
+            android:layout_height="20dp"
+            android:background="@drawable/carga_resource">
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/liner9"
+        android:layout_below="@+id/Liner7"
+        android:layout_width="350dp"
+        android:layout_height="80dp"
+        android:orientation="vertical"
+        android:background="@drawable/liner_info_code"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp">
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1.¿Cual es tu ruta?"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="12dp"/>
+
+        <TextView
+            android:id="@+id/mostrarRuta1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="528dp"
+        android:layout_below="@+id/liner9"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:paddingTop="10dp">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. ¿Cuantos pasajeros?"
+            android:gravity="center"
+            android:textSize="19dp"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:paddingLeft="60dp"
+            android:gravity="bottom"
+            android:paddingRight="100dp">
+
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cantidad:"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/cantidadPas"
+                android:layout_width="110dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number"
+                android:background="@color/white"
+                android:paddingLeft="10dp"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/button3"
         android:layout_width="300dp"

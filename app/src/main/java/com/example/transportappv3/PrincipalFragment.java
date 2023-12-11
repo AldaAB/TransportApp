@@ -12,6 +12,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +28,10 @@ import android.widget.LinearLayout;
  * create an instance of this fragment.
  */
 public class PrincipalFragment extends Fragment {
+
+
+    private FirebaseAuth rAuth;
+    private DatabaseReference mDataBase;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -71,19 +84,51 @@ public class PrincipalFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        TextView userText = view.findViewById(R.id.mostrarNombre);
+
+        rAuth = FirebaseAuth.getInstance();
+        mDataBase = FirebaseDatabase.getInstance().getReference().child("Usuarios");
+
+        FirebaseUser user = rAuth.getCurrentUser();
+
+        if (user != null){
+            String userID = user.getUid();
+            mostrarNombre(userID, userText);
+        }
+
         LinearLayout b1 = view.findViewById(R.id.Liner5);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Crear un Intent para navegar a otra Activity
-                Intent intent = new Intent(getActivity(), MainActivity.class);
+                Intent intent = new Intent(getActivity(), CodigoActivity.class);
                 getActivity().overridePendingTransition(R.anim.slide_up, R.anim.no_animation);
                 // Iniciar la Activity
                 startActivity(intent);
 
             }
 
+        });
+    }
+
+    private void mostrarNombre(String userID, TextView textViewName){
+        DatabaseReference userRef = mDataBase.child(userID);
+
+        userRef.child("nombreUser").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    String nombreUser = dataSnapshot.getValue(String.class);
+
+                    textViewName.setText(nombreUser);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
         });
     }
 }

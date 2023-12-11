@@ -19,145 +19,58 @@
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
+            android:gravity="center_horizontal"
             android:text="Información de usuario"
-            android:textSize="20dp"
-            android:textStyle="bold"
             android:textColor="@color/black"
-            android:gravity="center"/>
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView5"
-            android:layout_width="150dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="Nombre:"
+            android:text="Nombre completo:"
             android:textSize="15dp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:gravity="left"/>
+            android:gravity=""/>
 
         <EditText
             android:id="@+id/editNombre"
-            android:layout_width="150dp"
+            android:layout_width="250dp"
             android:layout_height="30dp"
             android:ems="1"
             android:inputType="text"
             android:background="@color/gray"
             />
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:gravity="left">
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="145dp"
-                android:layout_height="wrap_content"
-                android:text="Apellido Paterno:"
-                android:textSize="15dp"
-                android:paddingLeft="15dp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:gravity="left"/>
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:text="Apellido Materno:"
-                android:textSize="15dp"
-                android:paddingLeft="25dp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:gravity="left"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <EditText
-                android:id="@+id/editpaterno"
-                android:layout_width="125dp"
-                android:layout_height="30dp"
-                android:ems="1"
-                android:inputType="text"
-                android:background="@color/gray"/>
-
-            <LinearLayout
-                android:layout_width="30dp"
-                android:layout_height="30dp">
-            </LinearLayout>
-
-            <EditText
-                android:id="@+id/editMaterno"
-                android:layout_width="125dp"
-                android:layout_height="30dp"
-                android:ems="1"
-                android:inputType="text"
-                android:background="@color/gray"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="left">
-
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="Edad:"
-                android:paddingLeft="45dp"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:gravity="left"/>
 
             <TextView
                 android:id="@+id/textView9"
-                android:layout_width="160dp"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:text="Sexo:"
                 android:textSize="15dp"
-                android:paddingLeft="15dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:gravity="left"/>
-        </LinearLayout>
+                android:gravity="center"
+                android:layout_marginTop="20dp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <EditText
-                android:id="@+id/editEdad"
+            <Spinner
+                android:id="@+id/spinnerSexo"
                 android:layout_width="100dp"
                 android:layout_height="30dp"
-                android:ems="1"
-                android:inputType="number"
-                android:background="@color/gray"/>
-
-            <LinearLayout
-                android:layout_width="25dp"
-                android:layout_height="30dp">
-            </LinearLayout>
-
-            <EditText
-                android:id="@+id/editSexo"
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:ems="1"
-                android:inputType="text"
-                android:background="@color/gray"/>
+                android:layout_gravity="center"
+                android:background="@color/gray"
+                android:entries="@array/gender_options"/>
         </LinearLayout>
 
         <TextView
@@ -168,6 +81,7 @@
             android:textSize="15dp"
             android:textStyle="bold"
             android:textColor="@color/black"
+            android:layout_marginTop="20dp"
             android:gravity="left"/>
 
         <EditText
@@ -175,145 +89,99 @@
             android:layout_width="200dp"
             android:layout_height="30dp"
             android:ems="1"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:background="@color/gray"
             />
-
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="20dp"
-            android:paddingLeft="50dp">
-        <CheckBox
-            android:id="@+id/checkBoxDiscapacidad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Discapacidades"
-            />
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Contraseña:"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:paddingLeft="17dp"
+            android:textColor="@color/black"
+            android:gravity="left"/>
 
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="Nombre de la discapacidad:"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:gravity="left"/>
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Usuario:"
+            android:textSize="15dp"
+            android:paddingLeft="15dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:gravity="left"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editPassword"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:ems="1"
+                android:inputType="textPassword"
+                android:background="@color/gray"
+                />
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
-
-                <EditText
-                    android:id="@+id/editDiscapacidad"
-                    android:layout_width="150dp"
-                    android:layout_height="30dp"
-                    android:ems="1"
-                    android:inputType="text"
-                    android:background="@color/gray"
-                    />
-
-                <LinearLayout
-                    android:layout_width="15dp"
-                    android:layout_height="30dp">
-                </LinearLayout>
-
-                <Button
-                    android:id="@+id/buttonConstancia"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/botton_archivos"
-                    android:textSize="8dp"
-                    android:text="Agregar constancia" />
+                android:layout_width="25dp"
+                android:layout_height="30dp">
             </LinearLayout>
+
+            <EditText
+                android:id="@+id/editUser"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:ems="1"
+                android:inputType="text"
+                android:background="@color/gray"
+                />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="20dp"
-            android:paddingLeft="50dp">
-            <CheckBox
-                android:id="@+id/checkBoxEstudiante"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Estudiante"
-                />
+            android:gravity="left">
 
             <TextView
-                android:id="@+id/textView12"
-                android:layout_width="210dp"
+                android:id="@+id/textView15"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:text="Institucion a la que pertenece:"
+                android:text="Tipo de usuario:"
                 android:textSize="15dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:gravity="left"/>
+                android:gravity="center"
+                android:layout_marginTop="20dp"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
-
-                <EditText
-                    android:id="@+id/editInstitucion"
-                    android:layout_width="150dp"
-                    android:layout_height="30dp"
-                    android:ems="1"
-                    android:inputType="text"
-                    android:background="@color/gray"
-                    />
-
-                <LinearLayout
-                    android:layout_width="15dp"
-                    android:layout_height="30dp">
-                </LinearLayout>
-
-                <Button
-                    android:id="@+id/buttonCredencial"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/botton_archivos"
-                    android:textSize="8dp"
-                    android:text="Agregar credencial" />
-            </LinearLayout>
+            <Spinner
+                android:id="@+id/spinnerUserType"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@color/gray"
+                android:entries="@array/gender_options"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="15dp"
-            android:layout_height="20dp">
+            android:layout_height="60dp">
         </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="5dp"
-        android:paddingLeft="50dp">
-        <CheckBox
-            android:id="@+id/checkBoxTerceraEdad"
-            android:layout_width="165dp"
-            android:layout_height="wrap_content"
-            android:text="Tercera edad"
-            />
 
-        <Button
-            android:id="@+id/buttonTerceraEdad"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:layout_weight="1"
-            android:background="@drawable/botton_archivos"
-            android:text="Agregar credencial"
-            android:textSize="8dp" />
-    </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -328,7 +196,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/button_cancelar"
                 android:text="Cancelar"
-                android:textSize="15dp" />
+                android:textSize="15dp"/>
 
             <LinearLayout
                 android:layout_width="25dp"
@@ -341,7 +209,7 @@
                 android:layout_height="35dp"
                 android:layout_weight="1"
                 android:background="@drawable/button_register"
-                android:text="Continuar"
+                android:text="Registrar"
                 android:textStyle="bold"
                 android:textSize="15dp" />
 

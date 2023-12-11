@@ -68,7 +68,7 @@ public class TarifaFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-        LinearLayout b1 = view.findViewById(R.id.Liner2);
+        LinearLayout b1 = view.findViewById(R.id.Liner4);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override

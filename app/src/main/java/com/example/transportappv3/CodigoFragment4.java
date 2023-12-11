@@ -1,17 +1,23 @@
 package com.example.transportappv3;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.google.zxing.BarcodeFormat;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -71,6 +77,14 @@ public class CodigoFragment4 extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        ImageView imageViewCodigoQR = view.findViewById(R.id.imageViewCodigoQR);
+
+        if (getArguments() != null) {
+            String contenidoQR = getArguments().getString("codigoQR");
+
+            mostrarCodigoQR(contenidoQR, imageViewCodigoQR);
+        }
+
         Button b1 = view.findViewById(R.id.button5);
 
         b1.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +97,20 @@ public class CodigoFragment4 extends Fragment {
                 startActivity(intent);
             }
         });
+    }
+
+    private void mostrarCodigoQR(String contenidoQR, ImageView imageView) {
+        Log.d("TAG", "Contenido del código QR: " + contenidoQR);
+
+        try {
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            Bitmap bitmap = barcodeEncoder.encodeBitmap(contenidoQR, BarcodeFormat.QR_CODE, 250, 250);
+            imageView.setImageBitmap(bitmap);
+        }
+        catch (Exception e){
+            Log.e("TAG", "Error al generar el código QR: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
 }

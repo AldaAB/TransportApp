@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_codigoFragment1_to_codigoFragment2"
             app:destination="@id/codigoFragment2" />
+        <action
+            android:id="@+id/action_codigoFragment1_to_codigoFragment4"
+            app:destination="@id/codigoFragment4" />
     </fragment>
     <fragment
         android:id="@+id/codigoFragment2"

@@ -12,15 +12,37 @@
         android:orientation="vertical"
         android:gravity="center">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="70dp"
-            android:text="¡Hola Aldahir!"
+            android:text="¡Hola "
             android:gravity="left"
             android:textSize="25sp"
             android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/mostrarNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:text=""
+                android:gravity="left"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:text=" !"
+                android:gravity="left"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+        </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="80dp"

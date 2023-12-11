@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/Liner3"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:background="@drawable/redondea_boton3"
         android:orientation="vertical"
         android:gravity="center"
@@ -18,8 +18,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
             android:textAlignment="center"
             android:src="@drawable/house_chimney_9243286" />

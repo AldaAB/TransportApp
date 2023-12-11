@@ -10,8 +10,10 @@
 
     <color name="oranje_normal">#FF9800</color>
     <color name="oranje_dark">#975B03</color>
+    <color name="orange_ligth">#FECD84</color>
     <color name="gray">#BCBCBC</color>
     <color name="green">#1DCD17</color>
+    <color name="gray_medium">#656363</color>
     <color name="gray_dark">#575757</color>
     <color name="yellow">#FAFF00</color>
     <color name="red">#FF0000</color>

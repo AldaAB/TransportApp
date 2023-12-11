@@ -1,6 +1,35 @@
 <resources>
-    <string name="app_name">__TransportApp__</string>
+    <string name="app_name">PayBus</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="google_maps_key">AIzaSyC77_S1Ny4JJIHD9Wjzp9QOKO__VZUxIII</string>
+
+
+    <string-array name="gender_options">
+        <item>Seleccionar</item>
+        <item>Hombre</item>
+        <item>Mujer</item>
+    </string-array>
+
+    <string-array name="gender_options2">
+        <item>Seleccionar</item>
+        <item>Chofer</item>
+        <item>Pasajero</item>
+    </string-array>
+
+    <string-array name="opciones_ruta">
+        <item>Seleccionar</item>
+        <item>Base Teziutlan</item>
+        <item>Plaza Eden</item>
+        <item>Bodega Aurrera</item>
+        <item>Ahuateno</item>
+        <item>La misma idea</item>
+        <item>San Diego</item>
+        <item>IES Universidad</item>
+        <item>La estacion</item>
+        <item>Amila</item>
+        <item>Aire Libre</item>
+        <item>Valle Dorado</item>
+        <item>San Juan Acateno</item>
+        <item>BUAP</item>
+    </string-array>
 </resources>

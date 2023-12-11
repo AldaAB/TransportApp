@@ -1,24 +1,27 @@
 package com.example.transportappv3;
 
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,8 +30,8 @@ import com.google.firebase.database.FirebaseDatabase;
  */
 public class InformacionFragment extends Fragment {
 
-    RecyclerView recyclerView;
-    MainAdapter mainAdapter;
+    private FirebaseAuth rAuth;
+    private DatabaseReference mDataBase;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -75,8 +78,12 @@ public class InformacionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_informacion, container, false);
+        View view = inflater.inflate(R.layout.fragment_informacion, container, false);
+
+
+        return view;
     }
+
 
 
 
@@ -84,26 +91,26 @@ public class InformacionFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        LinearLayout b1 = view.findViewById(R.id.Liner4);
 
-        recyclerView = view.findViewById(R.id.RV1);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        TextView userText = view.findViewById(R.id.nombreUserT);
+        TextView nombreText = view.findViewById(R.id.nombreT);
+        TextView correoText = view.findViewById(R.id.correoT);
+        TextView sexoText = view.findViewById(R.id.sexoT);
 
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
+        rAuth = FirebaseAuth.getInstance();
+        mDataBase = FirebaseDatabase.getInstance().getReference().child("Usuarios");
 
-        if (user != null) {
-            // Si el usuario está autenticado, obtener el UID
-            String userId = user.getUid();
+        FirebaseUser user = rAuth.getCurrentUser();
+
+        if (user != null){
+            String userID = user.getUid();
+            mostrarNUser(userID, userText);
+            mostrarNombre(userID, nombreText);
+            mostrarCorreo(userID, correoText);
+            mostrarSexo(userID, sexoText);
         }
 
-        FirebaseRecyclerOptions<MainModel> options =
-                new FirebaseRecyclerOptions.Builder<MainModel>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Usuarios"), MainModel.class)
-                        .build();
-
-        mainAdapter = new MainAdapter(options);
-        recyclerView.setAdapter(mainAdapter);
+        LinearLayout b1 = view.findViewById(R.id.Liner4);
 
         Log.d("InformacionFragment", "Data loaded successfully");
 
@@ -115,7 +122,87 @@ public class InformacionFragment extends Fragment {
         });
     }
 
-    @Override
+    private void mostrarNUser(String userID, TextView textViewUser){
+        DatabaseReference userRef = mDataBase.child(userID);
+
+        userRef.child("nombreUser").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    String nombreUser = dataSnapshot.getValue(String.class);
+                    
+                    textViewUser.setText(nombreUser);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void mostrarNombre(String userID, TextView textViewName){
+        DatabaseReference userRef = mDataBase.child(userID);
+
+        userRef.child("nombre").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    String nombre = dataSnapshot.getValue(String.class);
+
+                    textViewName.setText(nombre);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void mostrarCorreo(String userID, TextView textViewCorreo){
+        DatabaseReference userRef = mDataBase.child(userID);
+
+        userRef.child("correo").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    String correo = dataSnapshot.getValue(String.class);
+
+                    textViewCorreo.setText(correo);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void mostrarSexo(String userID, TextView textViewSexo){
+        DatabaseReference userRef = mDataBase.child(userID);
+
+        userRef.child("sexo").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    String sexo = dataSnapshot.getValue(String.class);
+
+                    textViewSexo.setText(sexo);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    /*@Override
     public void onStart() {
         super.onStart();
         mainAdapter.startListening();
@@ -125,5 +212,5 @@ public class InformacionFragment extends Fragment {
     public void onStop() {
         super.onStop();
         mainAdapter.stopListening();
-    }
+    }*/
 }

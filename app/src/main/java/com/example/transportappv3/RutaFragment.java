@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -21,13 +22,17 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.transportappv3.utils.GPS_controler;
-import com.example.transportappv3.utils.Utils;
+import androidx.fragment.app.FragmentActivity;
+
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.common.api.GoogleApi;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,11 +42,12 @@ import com.google.android.gms.maps.model.LatLng;
 public class RutaFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleMap.OnMapClickListener {
 
     Context context;
-    GoogleMap nMap;
+    GoogleMap gMap;
     JsonObjectRequest jsonObjectRequest;
     RequestQueue request;
     Location location;
     GPS_controler gpsTraker;
+    FrameLayout map;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -95,6 +101,11 @@ public class RutaFragment extends Fragment implements OnMapReadyCallback, Google
         super.onViewCreated(view, savedInstanceState);
         LinearLayout b1 = view.findViewById(R.id.Liner1);
 
+        map = view.findViewById(R.id.map);
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getParentFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,6 +131,11 @@ public class RutaFragment extends Fragment implements OnMapReadyCallback, Google
         nMap.setOnMapClickListener(this);
         nMap.setOnMarkerClickListener((GoogleMap.OnMarkerClickListener) this);*/
 
+        this.gMap = googleMap;
+
+        LatLng mapTeziutlan = new LatLng(19.81897055975494, -97.36040337332157);
+        this.gMap.addMarker(new MarkerOptions().position(mapTeziutlan).title("Marcador de Teziutlan"));
+        this.gMap.moveCamera(CameraUpdateFactory.newLatLng(mapTeziutlan));
     }
 
     @Override

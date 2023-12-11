@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- TODO: Add your Google Maps API key here. -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyC77_S1Ny4JJIHD9Wjzp9QOKO__VZUxIII</string>
+
+    <!-- TODO: Add your certificate fingerprint here. -->
+    <string name="cert_fingerprint" templateMergeStrategy="preserve" translatable="false">TU_HUELLA_DIGITAL_SHA1</string>
+</resources>
